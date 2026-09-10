@@ -9,10 +9,13 @@ Quick status check for the Grow My Therapy Stage 2 assignment. **Read this befor
 
 ## Current Status (keep this block in sync — it's the whole point of this skill)
 
-- **Last completed phase:** Phase -1 — Docs & planning setup (brief fetched from Notion, phase plan written, progress log started, both skills created)
-- **Next phase to start:** Phase 0 — Setup & Reconnaissance (scaffold Next.js + Tailwind, deploy blank site to Vercel/Netlify, publicly push GitHub repo, map every section of https://www.conejovalleycounseling.com/home, decide the design-token strategy for the Phase 2 theme swap)
+- **Last completed phase:** Phase 0 — Setup & Reconnaissance. Next.js + Tailwind scaffolded and verified working (`npm run build`/`npm run dev` both confirmed), reference site fully mapped (12 sections) and documented in `docs/04-SITE-RECON.md`, full-page reference screenshots captured in `docs/reference-screenshots/`, local git repo initialized with first commit.
+- **Next phase to start:** Phase 1 — Clone the Homepage. Build each of the 12 sections from `docs/04-SITE-RECON.md` as components, comparing against `docs/reference-screenshots/` as you go.
 - **Deadline:** NOT YET SET — the 6-day window starts from the Internshala receipt date, which hasn't been recorded yet. Fill it into `docs/01-ASSIGNMENT-BRIEF.md` §8 as soon as known, and update this line.
-- **Open decisions / blockers:** none yet — Phase 0 hasn't started.
+- **Open decisions / blockers:**
+  - GitHub repo creation (public) + push — needs explicit user go-ahead (a Claude safety-rule requirement for publishing public content), asked but not yet confirmed as of this writing — check `docs/03-PROGRESS-LOG.md`'s Phase 0 entry for status.
+  - Vercel/Netlify deploy — needs the user's own account login, cannot be completed by Claude alone.
+  - **Standing rule for the rest of this project**: any color-palette, image, or other subjective/creative choice must be presented as visual options for the user to pick from (not decided unilaterally) — see the `feedback_creative_decisions_need_visual_choice` memory. This matters starting Phase 2 (theme) and Phase 4 (images).
 
 ## Where everything lives
 
