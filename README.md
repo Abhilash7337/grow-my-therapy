@@ -4,6 +4,7 @@ A homepage clone-and-redesign built for the Grow My Therapy Front-End Developer 
 
 **What this is:** the [conejovalleycounseling.com/home](https://www.conejovalleycounseling.com/home) homepage, cloned pixel-for-pixel for structure/layout, then redesigned end-to-end — new color theme, new copy, new images, and a new "Our Office" section — for a fictional therapist, **Dr. Maya Reynolds, PsyD** (Santa Monica, CA).
 
+**GitHub:** https://github.com/Abhilash7337/grow-my-therapy
 **Live site:** _add link once deployed_
 **Video walkthrough:** _add Loom link once recorded_
 

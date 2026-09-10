@@ -11,7 +11,7 @@ This is the running record of what's actually been done, updated **after every p
 - **Phase completed:** Phase 0 — Setup & Reconnaissance
 - **Next up:** Phase 1 — Clone the Homepage (build each of the 12 sections mapped in `04-SITE-RECON.md`, matching structure/spacing/responsiveness against the reference screenshots)
 - **Deadline:** not yet filled in — fill in `01-ASSIGNMENT-BRIEF.md` §8 as soon as the Internshala receipt date is known (6-day window from that date)
-- **Outstanding from Phase 0:** GitHub repo creation + push needs your explicit go-ahead (asking now, separately, per Claude's own safety rule on publishing public content) — local git repo + first commit are already done. Vercel deploy needs your own Vercel login — Claude can't complete that step for you, it'll need to be done together interactively or by you directly.
+- **Outstanding from Phase 0:** Vercel/Netlify deploy only — needs your own account login, Claude can't complete that step alone. GitHub is done: public repo live at https://github.com/Abhilash7337/grow-my-therapy.
 
 ---
 
@@ -78,9 +78,10 @@ GrowMyTherapy/
 - Design-token strategy (per the Phase 0 checklist): use Tailwind's theme config as the single source of color/spacing tokens, wrapped by three small reusable components identified during recon (`<Section background="cream|white|tan">`, `<SectionHeading accent="word">`, `<UnderlineCTA>`) — these three patterns repeat across all 12 sections of the reference site, so building them once in Phase 1 makes Phase 2's full theme swap a config change, not a rewrite.
 - **Per explicit user instruction this session**: any subjective/creative decision from here on (color palette in Phase 2, image selection in Phase 4, any visual style choice) must be presented as visual options for the user to pick from — not decided unilaterally. Saved as a standing memory (`feedback_creative_decisions_need_visual_choice`) so this isn't forgotten in a future session.
 
+**GitHub:** created and pushed, with your explicit go-ahead — public repo at https://github.com/Abhilash7337/grow-my-therapy, 2 commits.
+
 **Not yet done from the Phase 0 checklist (needs you):**
-- **GitHub repo (public) + push** — local commit is ready, but creating a *public* GitHub repo and pushing to it counts as "publishing public content" under Claude's safety rules, so it needs your explicit go-ahead before Claude does it (asked separately, same session).
-- **Vercel/Netlify deploy** — needs your own account login, which Claude cannot complete on its own. Either walk through it together interactively, or you run it yourself (`npx vercel` after the repo's pushed, or connect the GitHub repo in the Vercel dashboard).
+- **Vercel/Netlify deploy** — needs your own account login, which Claude cannot complete on its own. Either walk through it together interactively, or you run it yourself (`npx vercel` after logging in, or connect the GitHub repo in the Vercel dashboard — it's already public and pushed, so Vercel can pull straight from it).
 
 **Next phase:** Phase 1 — Clone the Homepage. Build the 12 sections from `docs/04-SITE-RECON.md` as components under `src/app/`, using the reference screenshots in `docs/reference-screenshots/` for side-by-side comparison as you go.
 
