@@ -1,26 +1,29 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Phase 2 theme — "Dusty rose & warm ash" (Option B, user-selected).
+     Accent deepened from the #B9808A shown in the picker to #A3707A for
+     WCAG contrast on small text (Header/Footer wordmark) — same direction,
+     same three-tone cream/white/tan rhythm from docs/04-SITE-RECON.md. */
+  --color-cream: #fbf6f4;
+  --color-cream-dark: #f3e7e3;
+  --color-tan: #e4d2cb;
+  --color-ink: #382f2d;
+  --color-accent: #a3707a;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-cream: var(--color-cream);
+  --color-cream-dark: var(--color-cream-dark);
+  --color-tan: var(--color-tan);
+  --color-ink: var(--color-ink);
+  --color-accent: var(--color-accent);
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
+  --font-script: var(--font-script);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-cream);
+  color: var(--color-ink);
 }
