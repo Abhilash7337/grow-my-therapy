@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="border-t-4 border-accent bg-cream-dark">
+    <footer id="contact" className="scroll-mt-28 border-t-4 border-accent bg-cream-dark">
       <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-3 md:px-10">
         <div>
           <span className="block font-serif text-2xl text-ink">Dr. Maya Reynolds, PsyD</span>
@@ -16,11 +16,31 @@ export default function Footer() {
         <div>
           <h3 className="mb-4 font-sans text-xs tracking-[0.2em] text-ink/60">NAVIGATE</h3>
           <ul className="space-y-2 font-sans text-sm text-ink/80">
-            <li>Home</li>
-            <li>About</li>
-            <li>Services</li>
-            <li>FAQs</li>
-            <li>Contact</li>
+            <li>
+              <a href="#" className="hover:text-ink">
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="#about" className="hover:text-ink">
+                About
+              </a>
+            </li>
+            <li>
+              <a href="#services" className="hover:text-ink">
+                Services
+              </a>
+            </li>
+            <li>
+              <a href="#faqs" className="hover:text-ink">
+                FAQs
+              </a>
+            </li>
+            <li>
+              <a href="#contact" className="hover:text-ink">
+                Contact
+              </a>
+            </li>
           </ul>
         </div>
 

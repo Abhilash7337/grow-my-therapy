@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import Reveal from "./Reveal";
 
 type Background = "cream" | "creamDark" | "white" | "tan";
 
@@ -21,8 +22,8 @@ export default function Section({
   children: ReactNode;
 }) {
   return (
-    <section id={id} className={`${backgroundClass[background]} ${className}`}>
-      <div className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">{children}</div>
+    <section id={id} className={`scroll-mt-28 ${backgroundClass[background]} ${className}`}>
+      <Reveal className="mx-auto max-w-6xl px-6 py-16 md:px-10 md:py-24">{children}</Reveal>
     </section>
   );
 }

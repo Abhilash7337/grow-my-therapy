@@ -22,7 +22,7 @@ const FAQS = [
 
 export default function FAQSection() {
   return (
-    <Section background="white">
+    <Section background="white" id="faqs">
       <SectionHeading className="mb-12">Frequently asked questions</SectionHeading>
 
       <div className="grid gap-x-10 gap-y-10 md:grid-cols-2">

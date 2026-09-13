@@ -6,15 +6,15 @@ import UnderlineCTA from "../UnderlineCTA";
 
 export default function HowWeWork() {
   return (
-    <Section background="tan">
+    <Section background="tan" id="about">
       <div className="grid items-center gap-10 md:grid-cols-[1fr_1.4fr]">
-        <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm">
+        <div className="group relative aspect-[4/5] w-full overflow-hidden rounded-sm">
           <Image
             src="/images/maya-headshot.jpg"
             alt="Dr. Maya Reynolds, PsyD"
             fill
             sizes="(min-width: 768px) 40vw, 90vw"
-            className="object-cover"
+            className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
             priority={false}
           />
         </div>
@@ -32,7 +32,9 @@ export default function HowWeWork() {
             body-oriented techniques to support both the emotional and physiological sides of what
             you&apos;re going through.
           </p>
-          <UnderlineCTA className="w-fit">Learn more about my approach</UnderlineCTA>
+          <UnderlineCTA href="#faqs" className="w-fit">
+            Learn more about my approach
+          </UnderlineCTA>
         </div>
       </div>
     </Section>

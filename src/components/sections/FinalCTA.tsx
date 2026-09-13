@@ -17,7 +17,7 @@ export default function FinalCTA() {
           grounded, and more like yourself, I&apos;d be glad to talk it through with you — whether
           that&apos;s in person in Santa Monica or over telehealth anywhere in California.
         </p>
-        <UnderlineCTA>Schedule a Consultation</UnderlineCTA>
+        <UnderlineCTA href="#contact">Schedule a Consultation</UnderlineCTA>
       </div>
     </Section>
   );

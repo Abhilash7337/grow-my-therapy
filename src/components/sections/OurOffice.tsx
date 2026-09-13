@@ -22,22 +22,22 @@ export default function OurOffice() {
         </div>
 
         <div className="grid grid-cols-2 gap-4">
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm">
+          <div className="group relative aspect-[4/5] w-full overflow-hidden rounded-sm">
             <Image
               src="/images/office-lounge-1.jpg"
               alt="A quiet, sunlit corner of the office with comfortable seating"
               fill
               sizes="(min-width: 768px) 22vw, 45vw"
-              className="object-cover"
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
             />
           </div>
-          <div className="relative aspect-[4/5] w-full translate-y-8 overflow-hidden rounded-sm">
+          <div className="group relative aspect-[4/5] w-full translate-y-8 overflow-hidden rounded-sm">
             <Image
               src="/images/office-lounge-2.jpg"
               alt="A calm, uncluttered therapy room with natural light"
               fill
               sizes="(min-width: 768px) 22vw, 45vw"
-              className="object-cover"
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
             />
           </div>
         </div>
