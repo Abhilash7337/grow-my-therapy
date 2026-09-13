@@ -20,7 +20,7 @@ const SERVICES = [
 
 export default function SpecialtiesGrid() {
   return (
-    <Section background="white">
+    <Section background="white" id="services">
       <SectionHeading className="mb-12">
         My <Accent>services</Accent> include...
       </SectionHeading>
@@ -30,7 +30,9 @@ export default function SpecialtiesGrid() {
           <div key={s.title} className="flex flex-col gap-3">
             <h3 className="font-serif text-xl text-ink">{s.title}</h3>
             <p className="font-sans text-sm text-ink/80">{s.body}</p>
-            <UnderlineCTA className="w-fit">Learn more</UnderlineCTA>
+            <UnderlineCTA href="#faqs" className="w-fit">
+              Learn more
+            </UnderlineCTA>
           </div>
         ))}
       </div>

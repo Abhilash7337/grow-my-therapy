@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Reveal from "../Reveal";
 
 export default function PhotoQuoteBand() {
   return (
@@ -14,13 +15,15 @@ export default function PhotoQuoteBand() {
         className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/50 to-ink/30"
         aria-hidden="true"
       />
-      <p className="relative max-w-2xl text-center font-serif text-2xl font-light leading-relaxed text-white md:text-3xl">
-        You don&apos;t have to have it all figured out to start.{" "}
-        <em className="italic">
-          Therapy works best when you feel respected, understood, and actively involved in your
-          own process.
-        </em>
-      </p>
+      <Reveal className="relative max-w-2xl">
+        <p className="text-center font-serif text-2xl font-light leading-relaxed text-white md:text-3xl">
+          You don&apos;t have to have it all figured out to start.{" "}
+          <em className="italic">
+            Therapy works best when you feel respected, understood, and actively involved in your
+            own process.
+          </em>
+        </p>
+      </Reveal>
     </section>
   );
 }

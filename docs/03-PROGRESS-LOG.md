@@ -8,11 +8,12 @@ This is the running record of what's actually been done, updated **after every p
 
 ## Current Status
 
-- **Phase completed:** Phase 7 — Deploy & Repo Finalization (everything Claude can do without the user's own login is done; **the actual deploy is the one remaining outstanding item in the whole assignment**)
-- **Next up:** Phase 8 — Video Walkthrough (30% of grade, the single highest-weighted item — don't treat as an afterthought). Needs the user to actually record it in Loom; Claude can help draft the talking outline. **The deploy from Phase 7 should probably happen before recording**, since the walkthrough should demo the live site.
+- **Phase completed:** Phase 7 — Deploy & Repo Finalization is on `main` (2 merged PRs). **Two post-Phase-7 changes are done but NOT yet committed/pushed:** (1) the navigation fix — header/footer nav and every CTA button were dead `href="#"` links, all now point to real in-page anchors; (2) a full animation/micro-interaction pass (scroll-reveal, hero entrance, animated underlines, photo hover-zoom, sticky shrink-on-scroll header, hamburger→X). See the two entries below for details.
+- **Next up:** commit + push both changes (ask the user first — standing git-safety rule), then Phase 8 — Video Walkthrough (30% of grade, the single highest-weighted item). Needs the user to actually record it in Loom; Claude can help draft the talking outline.
 - **Deadline:** not yet filled in — fill in `01-ASSIGNMENT-BRIEF.md` §8 as soon as the Internshala receipt date is known (6-day window from that date)
-- **The one real outstanding blocker across the whole project:** Vercel/Netlify deploy — needs the user's own account login, Claude cannot complete this step alone. Everything else Claude can do has been done. GitHub is public and up to date (pending a commit — see below).
-- **Nothing has been committed to git this whole session** — every phase from 1 through 7 is sitting as uncommitted working-tree changes. This needs to happen before pushing/deploying. Ask the user before committing (per standing git-safety rules) even though it's clearly expected at this point.
+- **The one real outstanding blocker across the whole project:** the Vercel/Netlify deploy — needs the user's own account login, Claude cannot complete this step alone. **Do this before recording the Phase 8 video**, so the walkthrough demos the live site rather than localhost. Make sure the nav-fix commit lands on `main` before deploying, or the live site will still have dead links.
+- **README rewritten** to match the assignment brief's own framing exactly — lists the 3 required deliverables verbatim, maps each of the 4 graded parts to its current status (Parts 1–3 done, Part 4/video pending), and fixed a "pixel-for-pixel" overclaim to "closely cloned" (never literally pixel-measured against the original).
+- **No Claude/AI attribution going forward** — user asked this be dropped from commits, PRs, README, and code for this repo (see the `feedback_no_claude_attribution_in_commits` memory). The two already-merged commits keep their existing trailer; not being rewritten. `docs/` and `.claude/skills/` files are explicitly exempt from this — they stay as an internal build log.
 - **All `PhotoBlock` placeholders are gone**, dead code removed, `public/images/candidates/` (the 40 reference-only photos) deleted in Phase 7.
 
 ---
@@ -288,6 +289,65 @@ Added `src/components/sections/OurOffice.tsx`, a brand-new homepage section that
 - **Nothing from Phase 1 through Phase 7 has been committed to git yet.** This needs to happen (and be pushed) before a Vercel/Netlify deploy would even have anything current to pull — the GitHub repo right now still only reflects the Phase 0 state (2 commits, per the Phase 0 log entry).
 
 **Next phase:** Phase 8 — Video Walkthrough (30%, the highest-weighted single item in the whole assignment). This is fundamentally a "the user records themselves" task — Claude can help draft a loose talking outline covering the desktop + mobile walkthrough and the non-technical framing the brief asks for, but recording is on the user. **Should happen after the deploy**, so the walkthrough demos the actual live site rather than localhost.
+
+---
+
+## Entry: 2026-09-12 — Bug fix: non-functional navigation caught by user
+
+**What was done:**
+User caught a real functionality gap during their own review: the Header's nav links (ABOUT/SERVICES/APPROACH/FAQS/CONTACT) all pointed to `href="#"` — visually present, completely non-functional. Audited every interactive element on the page for the same issue, not just the header.
+
+**Found and fixed:**
+- Header nav (desktop + mobile) — now points to real in-page anchors: `#about`, `#services`, `#approach`, `#faqs`, `#contact`.
+- Added `id` attributes to the sections those anchors need: `About` → `HowWeWork.tsx`, `Approach` → `IntroHope.tsx` (already had a "MY APPROACH IS WARM, COLLABORATIVE..." eyebrow, so it was the natural fit — there's no separate dedicated "Approach" section), `Services` → `SpecialtiesGrid.tsx`, `FAQs` → `FAQSection.tsx`, `Contact` → `Footer.tsx` (the only section with real contact info — the physical address).
+- Footer's "NAVIGATE" list was plain `<li>` text, not even links — converted to real anchors matching the header nav.
+- Every `UnderlineCTA` was defaulting to `href="#"` unless explicitly overridden, and none of the call sites had overridden it: both "Schedule a Consultation" buttons (Hero, FinalCTA) now point to `#contact` (the real address — there's no booking backend or email in this assignment's scope, so the honest functional target is the actual contact info, not a fake form); "Learn more about my approach" (About section) and all 3 service "Learn more" links (Services section) now point to `#faqs`, since that's where the elaboration on modalities/approach/who-she-works-with actually lives on this single-page site.
+- Mobile menu now closes automatically when a nav link is tapped (previously stayed open after navigating — added `onClick={() => setOpen(false)}` on each mobile link and the mobile CONTACT button; `UnderlineCTA` gained an optional `onClick` prop to support this).
+- Added `scroll-behavior: smooth` (guarded behind `prefers-reduced-motion: no-preference`) so the anchor jumps feel intentional rather than jarring.
+
+**Verification:**
+- `npm run build`/`npm run lint` pass.
+- Programmatically checked every `href="#..."` on the page resolves to a real `getElementById` target — 17 links, zero dangling anchors (the 2 remaining literal `href="#"` are the logo and Footer's "Home" link, which correctly scroll to page-top by browser default — not a bug).
+- Clicked through nav links (SERVICES, FAQS, CONTACT) and confirmed `location.hash` and `window.scrollY` both land correctly — including confirming CONTACT scrolls to the actual page-bottom max-scroll position (the footer is the last element, so `scrollY === document.documentElement.scrollHeight - innerHeight` exactly).
+- Confirmed the mobile hamburger menu closes after tapping a link.
+
+**Not yet done / carried forward:**
+- This fix is **not yet committed or pushed** — needs to land on `main` before the eventual Vercel/Netlify deploy, or the live site will still have the broken nav.
+
+**Next phase:** still Phase 8 — Video Walkthrough, once this fix is committed/pushed and the deploy happens.
+
+---
+
+## Entry: 2026-09-12 — Enhancement: scroll-reveal + micro-interactions
+
+**What was done:**
+User asked for a set of tasteful animations to make the site feel more polished, after checking whether the brief mentioned any (it doesn't, at least not in the text captured in `01-ASSIGNMENT-BRIEF.md` — this was flagged to the user in case they were thinking of a different source). Proposed 6 additions matching the site's calm/warm brand rather than literal "futuristic" effects (explicitly ruled out parallax, glassmorphism, neon — would clash with the therapy-site tone), user approved all 6:
+
+1. **Scroll-reveal on sections** — new `src/components/Reveal.tsx` (client component, `IntersectionObserver`-based, fades + slides up 24px on first entry into viewport, disconnects after firing once). Wired into `Section.tsx` itself so almost every section gets it for free; `PhotoQuoteBand.tsx` (the one section that doesn't use `Section`) got it added directly around its text.
+2. **Hero entrance stagger** — pure CSS `@keyframes fade-up` in `globals.css`, applied via `.animate-fade-up` + per-element `[animation-delay:Xms]` on the eyebrow/heading/subtext/CTA/photos in `Hero.tsx`. Deliberately NOT using the IntersectionObserver approach here since Hero is above the fold and already visible at load — using the JS-gated approach would cause a flash-of-invisible-content before the observer fires.
+3. **Animated CTA underline** — redesigned `UnderlineCTA.tsx`: kept the permanent thin underline (it's the site's only "this is clickable" affordance, since there are no filled buttons anywhere — removing it would hurt usability), added a second accent-colored underline that grows from 0 to 100% width on hover via `group-hover:w-full`, so hovering reads as a color-fill sweep left-to-right rather than the old flat opacity fade.
+4. **Photo hover-zoom** — `group` + `group-hover:scale-110` with a 700ms transition added to every photo wrapper: both Hero photos, all 3 Who-I-Help cards, the Intro photo, the About headshot, both Our Office photos.
+5. **Sticky shrink-on-scroll header** — `Header.tsx` gained a `scrolled` state (scroll listener, threshold 40px) that shrinks padding (py-6→py-3) and text size (text-2xl→text-xl) and adds a shadow once scrolled; header is now `sticky top-0 z-50` (was static/non-sticky before).
+6. **Hamburger → X** — the 3-span mobile menu icon animates into an X when open (middle line fades, outer two rotate 45°/-45° and translate to meet in the middle).
+
+Also added `@keyframes fade-up` and a `.animate-fade-up` utility to `globals.css`; both new animation systems (`Reveal` and `.animate-fade-up`) respect `prefers-reduced-motion` (Reveal via a `motion-reduce:` Tailwind override that forces full visibility with no transition; the CSS keyframe itself is gated behind `@media (prefers-reduced-motion: no-preference)`).
+
+**Bugs hit and fixed along the way (both real, not hypothetical):**
+- **Tailwind transform composition silently failed** for the hamburger icon: combining `translate-y-[7px] rotate-45` (two separate transform utilities) generated a class string with zero matching CSS rules in the compiled stylesheet — confirmed by directly inspecting `document.styleSheets`. Root cause not fully diagnosed (worked fine for single-utility transforms elsewhere in the codebase, e.g. `-translate-y-8` on photo offsets), but the fix sidesteps it entirely: switched to a single arbitrary-property utility that sets the whole `transform` in one declaration — `[transform:translateY(7px)_rotate(45deg)]` — which is guaranteed to compile since it's one literal CSS declaration, not a composition of multiple utilities.
+- **Sticky header height changes after the anchor-scroll lands, not before**: the browser calculates where to land an anchor jump using the header's height *at click time* (unscrolled, 90px tall), but the header then shrinks to 62px once `scrolled` becomes true post-landing — shifting all content up and re-covering part of the target section. `scroll-mt-20` (80px, already less than the 90px unscrolled header) wasn't enough even before accounting for the shift. Fixed by bumping to `scroll-mt-28` (112px) on `Section.tsx` and `Footer.tsx`, comfortably clearing both header states with room to spare — verified programmatically: every nav target (`about`, `approach`, `services`, `faqs`, `contact`) now lands with a consistent ~22px gap below the header, confirmed via `getBoundingClientRect()` diffing after polling until the smooth-scroll animation actually finishes (a fixed timeout wasn't long enough for the longer scroll distances like `#services`/`#faqs` — had to poll `window.scrollY` until it stabilized instead).
+
+**Verification:**
+- `npm run build`/`npm run lint` pass (one real lint catch along the way: `Reveal.tsx` originally called `setVisible(true)` synchronously in the effect body for the reduced-motion branch, which the `react-hooks/set-state-in-effect` rule correctly flags as a cascading-render anti-pattern — fixed by moving that case to a pure CSS `motion-reduce:` override instead of a JS-computed initial state).
+- Confirmed scroll-reveal actually toggles (checked the Reveal wrapper's class list before/after scrolling a section into view: `opacity-0 translate-y-6` → `opacity-100 translate-y-0`).
+- Confirmed header shrink via computed `padding-top` at `scrollY=0` (24px) vs `scrollY=300` (12px).
+- Confirmed hamburger→X via computed `transform` matrices on both outer spans and `opacity: 0` on the middle span.
+- Re-verified all 5 nav anchors land with a clean, consistent gap below the sticky header (no overlap) after the `scroll-mt-28` fix, using a poll-until-scroll-settles check rather than a fixed wait.
+- Screenshot-confirmed the mobile menu (X icon, animated underline on CONTACT) and the Hero fade-up render correctly.
+
+**Not yet done / carried forward:**
+- Neither this nor the navigation fix from the previous entry is committed/pushed yet.
+
+**Next phase:** commit both outstanding changes, then Phase 8 — Video Walkthrough.
 
 ---
 
