@@ -8,10 +8,10 @@ This is the running record of what's actually been done, updated **after every p
 
 ## Current Status
 
-- **Phase completed:** Phase 7 — Deploy & Repo Finalization is on `main` (2 merged PRs). **Two post-Phase-7 changes are done but NOT yet committed/pushed:** (1) the navigation fix — header/footer nav and every CTA button were dead `href="#"` links, all now point to real in-page anchors; (2) a full animation/micro-interaction pass (scroll-reveal, hero entrance, animated underlines, photo hover-zoom, sticky shrink-on-scroll header, hamburger→X). See the two entries below for details.
-- **Next up:** commit + push both changes (ask the user first — standing git-safety rule), then Phase 8 — Video Walkthrough (30% of grade, the single highest-weighted item). Needs the user to actually record it in Loom; Claude can help draft the talking outline.
+- **Phase completed:** Phase 7 — Deploy & Repo Finalization, PLUS the navigation fix and the animation/micro-interaction pass — all now on `main` via [PR #3](https://github.com/Abhilash7337/grow-my-therapy/pull/3) (3 PRs merged total: [#1](https://github.com/Abhilash7337/grow-my-therapy/pull/1) full build, [#2](https://github.com/Abhilash7337/grow-my-therapy/pull/2) README, [#3](https://github.com/Abhilash7337/grow-my-therapy/pull/3) nav fix + animations). GitHub repo is fully current.
+- **Next up:** Phase 8 — Video Walkthrough (30% of grade, the single highest-weighted item). Needs the user to actually record it in Loom; Claude can help draft the talking outline.
 - **Deadline:** not yet filled in — fill in `01-ASSIGNMENT-BRIEF.md` §8 as soon as the Internshala receipt date is known (6-day window from that date)
-- **The one real outstanding blocker across the whole project:** the Vercel/Netlify deploy — needs the user's own account login, Claude cannot complete this step alone. **Do this before recording the Phase 8 video**, so the walkthrough demos the live site rather than localhost. Make sure the nav-fix commit lands on `main` before deploying, or the live site will still have dead links.
+- **The one real outstanding blocker across the whole project:** the Vercel/Netlify deploy — needs the user's own account login, Claude cannot complete this step alone. `main` is fully current now, so connecting the repo to Vercel will pull the finished site directly. **Do this before recording the Phase 8 video**, so the walkthrough demos the live site rather than localhost.
 - **README rewritten** to match the assignment brief's own framing exactly — lists the 3 required deliverables verbatim, maps each of the 4 graded parts to its current status (Parts 1–3 done, Part 4/video pending), and fixed a "pixel-for-pixel" overclaim to "closely cloned" (never literally pixel-measured against the original).
 - **No Claude/AI attribution going forward** — user asked this be dropped from commits, PRs, README, and code for this repo (see the `feedback_no_claude_attribution_in_commits` memory). The two already-merged commits keep their existing trailer; not being rewritten. `docs/` and `.claude/skills/` files are explicitly exempt from this — they stay as an internal build log.
 - **All `PhotoBlock` placeholders are gone**, dead code removed, `public/images/candidates/` (the 40 reference-only photos) deleted in Phase 7.
@@ -312,7 +312,7 @@ User caught a real functionality gap during their own review: the Header's nav l
 - Confirmed the mobile hamburger menu closes after tapping a link.
 
 **Not yet done / carried forward:**
-- This fix is **not yet committed or pushed** — needs to land on `main` before the eventual Vercel/Netlify deploy, or the live site will still have the broken nav.
+- (Update: committed and merged to `main` together with the animation pass below, via PR #3.)
 
 **Next phase:** still Phase 8 — Video Walkthrough, once this fix is committed/pushed and the deploy happens.
 
@@ -345,9 +345,9 @@ Also added `@keyframes fade-up` and a `.animate-fade-up` utility to `globals.css
 - Screenshot-confirmed the mobile menu (X icon, animated underline on CONTACT) and the Hero fade-up render correctly.
 
 **Not yet done / carried forward:**
-- Neither this nor the navigation fix from the previous entry is committed/pushed yet.
+- (Update: committed and merged to `main` together with the navigation fix above, via PR #3 — https://github.com/Abhilash7337/grow-my-therapy/pull/3.)
 
-**Next phase:** commit both outstanding changes, then Phase 8 — Video Walkthrough.
+**Next phase:** Phase 8 — Video Walkthrough.
 
 ---
 
