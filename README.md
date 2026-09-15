@@ -8,7 +8,7 @@ Front-End Developer Internship, Stage 2 (Practical Assignment) for **Grow My The
 
 Per the assignment brief, three links are required:
 
-1. **Live website:** _add link once deployed_
+1. **Live website:** https://grow-my-therapy-lemon.vercel.app/
 2. **Public GitHub repository:** https://github.com/Abhilash7337/grow-my-therapy
 3. **Video walkthrough (Loom):** _add link once recorded_
 
@@ -26,8 +26,6 @@ Per the assignment brief, three links are required:
 | Part 3 — New "Our Office" section (10%) | ✅ Done — new section using her real office photos, not present in the original template |
 | Part 4 — Video walkthrough (30%, highest weight) | ⏳ Not yet recorded |
 
-See [`docs/03-PROGRESS-LOG.md`](docs/03-PROGRESS-LOG.md) for the full phase-by-phase build history.
-
 ## Getting started
 
 ```bash
@@ -36,13 +34,3 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
-
-## Project docs
-
-The full assignment brief, build plan, and progress log live in [`docs/`](docs/):
-
-- [`docs/01-ASSIGNMENT-BRIEF.md`](docs/01-ASSIGNMENT-BRIEF.md) — the assignment requirements, verbatim
-- [`docs/02-PHASE-PLAN.md`](docs/02-PHASE-PLAN.md) — build plan, phase by phase
-- [`docs/03-PROGRESS-LOG.md`](docs/03-PROGRESS-LOG.md) — what's been done so far
-- [`docs/04-SITE-RECON.md`](docs/04-SITE-RECON.md) — structural/style notes on the reference site
-- [`docs/05-INTERVIEW-EXPLAINER.md`](docs/05-INTERVIEW-EXPLAINER.md) — plain-language explainer for talking through this project
