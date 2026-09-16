@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 export default function ScheduleDialog({ className = "" }: { className?: string }) {
   const [open, setOpen] = useState(false);
@@ -49,8 +50,9 @@ export default function ScheduleDialog({ className = "" }: { className?: string 
         />
       </button>
 
-      {open && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+      {open &&
+        createPortal(
+          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 text-left">
           <div
             className="absolute inset-0 animate-overlay-in bg-ink/50 backdrop-blur-sm"
             onClick={close}
@@ -171,8 +173,9 @@ export default function ScheduleDialog({ className = "" }: { className?: string 
               </div>
             )}
           </div>
-        </div>
-      )}
+          </div>,
+          document.body
+        )}
     </>
   );
 }
