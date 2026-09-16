@@ -1,5 +1,6 @@
 import Section from "../Section";
 import SectionHeading from "../SectionHeading";
+import Reveal from "../Reveal";
 
 const FAQS = [
   {
@@ -26,11 +27,11 @@ export default function FAQSection() {
       <SectionHeading className="mb-12">Frequently asked questions</SectionHeading>
 
       <div className="grid gap-x-10 gap-y-10 md:grid-cols-2">
-        {FAQS.map((item) => (
-          <div key={item.q} className="flex flex-col gap-2">
+        {FAQS.map((item, index) => (
+          <Reveal key={item.q} delayMs={index * 80} className="flex flex-col gap-2">
             <h3 className="font-serif text-lg text-ink">{item.q}</h3>
             <p className="font-sans text-sm text-ink/80">{item.a}</p>
-          </div>
+          </Reveal>
         ))}
       </div>
     </Section>
