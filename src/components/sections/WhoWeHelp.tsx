@@ -33,8 +33,11 @@ export default function WhoWeHelp() {
 
       <div className="grid gap-10 md:grid-cols-3">
         {CARDS.map((card) => (
-          <div key={card.title} className="flex flex-col gap-4">
-            <div className="group relative aspect-[4/5] w-full overflow-hidden rounded-sm">
+          <div
+            key={card.title}
+            className="group -m-3 flex flex-col gap-4 rounded-md p-3 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_-22px_rgba(56,47,45,0.4)] motion-reduce:hover:translate-y-0"
+          >
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm">
               <Image
                 src={card.image}
                 alt={card.alt}

@@ -27,7 +27,10 @@ export default function SpecialtiesGrid() {
 
       <div className="grid gap-x-10 gap-y-12 md:grid-cols-3">
         {SERVICES.map((s) => (
-          <div key={s.title} className="flex flex-col gap-3">
+          <div
+            key={s.title}
+            className="-m-3 flex flex-col gap-3 rounded-md p-3 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_-22px_rgba(56,47,45,0.4)] motion-reduce:hover:translate-y-0"
+          >
             <h3 className="font-serif text-xl text-ink">{s.title}</h3>
             <p className="font-sans text-sm text-ink/80">{s.body}</p>
             <UnderlineCTA href="#faqs" className="w-fit">

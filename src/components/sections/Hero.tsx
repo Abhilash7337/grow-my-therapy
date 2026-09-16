@@ -3,7 +3,7 @@ import Section from "../Section";
 import EyebrowLabel from "../EyebrowLabel";
 import SectionHeading from "../SectionHeading";
 import Accent from "../Accent";
-import UnderlineCTA from "../UnderlineCTA";
+import ScheduleDialog from "../ScheduleDialog";
 
 export default function Hero() {
   return (
@@ -21,12 +21,7 @@ export default function Hero() {
             In-person sessions in Santa Monica or secure telehealth anywhere in California — for
             high-achieving adults ready to feel steady again.
           </p>
-          <UnderlineCTA
-            href="#contact"
-            className="w-fit animate-fade-up [animation-delay:360ms]"
-          >
-            Schedule a Consultation
-          </UnderlineCTA>
+          <ScheduleDialog className="w-fit animate-fade-up [animation-delay:360ms]" />
         </div>
 
         <div className="relative grid animate-fade-up grid-cols-3 gap-4 [animation-delay:200ms]">

@@ -19,7 +19,7 @@ export default function IntroHope() {
             from the outside — but inside, anxiety and old patterns keep pulling you back to the
             same overwhelmed, stuck feeling. That&apos;s often exactly where therapy starts.
           </p>
-          <div className="group relative aspect-[16/10] w-full overflow-hidden rounded-sm">
+          <div className="group relative aspect-[4/5] w-full overflow-hidden rounded-sm">
             <Image
               src="/images/intro-journaling.jpg"
               alt="Reading quietly on a calm morning"

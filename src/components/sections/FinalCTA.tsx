@@ -2,7 +2,7 @@ import Section from "../Section";
 import EyebrowLabel from "../EyebrowLabel";
 import SectionHeading from "../SectionHeading";
 import Accent from "../Accent";
-import UnderlineCTA from "../UnderlineCTA";
+import ScheduleDialog from "../ScheduleDialog";
 
 export default function FinalCTA() {
   return (
@@ -17,7 +17,7 @@ export default function FinalCTA() {
           grounded, and more like yourself, I&apos;d be glad to talk it through with you — whether
           that&apos;s in person in Santa Monica or over telehealth anywhere in California.
         </p>
-        <UnderlineCTA href="#contact">Schedule a Consultation</UnderlineCTA>
+        <ScheduleDialog />
       </div>
     </Section>
   );

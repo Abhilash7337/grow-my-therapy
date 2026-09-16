@@ -15,7 +15,7 @@ export default function UnderlineCTA({
     <a
       href={href}
       onClick={onClick}
-      className={`group relative inline-block rounded-none pb-1 font-sans text-xs md:text-sm uppercase tracking-[0.15em] text-ink ${className}`}
+      className={`group relative inline-block rounded-none pb-1 font-sans text-xs md:text-sm uppercase tracking-[0.15em] text-ink transition-transform duration-150 active:scale-95 motion-reduce:active:scale-100 ${className}`}
     >
       {children}
       <span className="absolute inset-x-0 bottom-0 h-px bg-ink" aria-hidden="true" />

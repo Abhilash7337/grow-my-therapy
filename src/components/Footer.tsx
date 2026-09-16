@@ -16,31 +16,26 @@ export default function Footer() {
         <div>
           <h3 className="mb-4 font-sans text-xs tracking-[0.2em] text-ink/60">NAVIGATE</h3>
           <ul className="space-y-2 font-sans text-sm text-ink/80">
-            <li>
-              <a href="#" className="hover:text-ink">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="#about" className="hover:text-ink">
-                About
-              </a>
-            </li>
-            <li>
-              <a href="#services" className="hover:text-ink">
-                Services
-              </a>
-            </li>
-            <li>
-              <a href="#faqs" className="hover:text-ink">
-                FAQs
-              </a>
-            </li>
-            <li>
-              <a href="#contact" className="hover:text-ink">
-                Contact
-              </a>
-            </li>
+            {[
+              { label: "Home", href: "#" },
+              { label: "About", href: "#about" },
+              { label: "Services", href: "#services" },
+              { label: "FAQs", href: "#faqs" },
+              { label: "Contact", href: "#contact" },
+            ].map((link) => (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  className="group relative inline-block text-ink/80 transition-transform duration-150 hover:text-ink active:scale-95 motion-reduce:active:scale-100"
+                >
+                  {link.label}
+                  <span
+                    className="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-accent transition-transform duration-300 ease-out group-hover:scale-x-100 motion-reduce:transition-none"
+                    aria-hidden="true"
+                  />
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
 

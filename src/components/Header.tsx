@@ -50,14 +50,18 @@ export default function Header() {
             <a
               key={link.label}
               href={link.href}
-              className="font-sans text-xs tracking-[0.15em] text-ink hover:opacity-60"
+              className="group relative font-sans text-xs tracking-[0.15em] text-ink transition-transform duration-150 active:scale-95 motion-reduce:active:scale-100"
             >
               {link.label}
+              <span
+                className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-accent transition-transform duration-300 ease-out group-hover:scale-x-100 motion-reduce:transition-none"
+                aria-hidden="true"
+              />
             </a>
           ))}
           <a
             href="#contact"
-            className="rounded-full border border-ink px-5 py-2 font-sans text-xs tracking-[0.15em] text-ink hover:opacity-60"
+            className="rounded-full border border-ink px-5 py-2 font-sans text-xs tracking-[0.15em] text-ink transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_24px_-12px_rgba(56,47,45,0.45)] active:translate-y-0 active:scale-95 motion-reduce:hover:translate-y-0 motion-reduce:active:scale-100"
           >
             CONTACT
           </a>
@@ -67,7 +71,7 @@ export default function Header() {
           type="button"
           aria-label="Toggle menu"
           aria-expanded={open}
-          className="relative flex h-4 w-6 flex-col justify-between md:hidden"
+          className="relative flex h-4 w-6 flex-col justify-between transition-transform duration-150 active:scale-90 motion-reduce:active:scale-100 md:hidden"
           onClick={() => setOpen((v) => !v)}
         >
           <span
@@ -88,23 +92,29 @@ export default function Header() {
         </button>
       </div>
 
-      {open && (
-        <nav className="flex flex-col gap-4 border-t border-ink/10 px-6 py-6 md:hidden">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="font-sans text-xs tracking-[0.15em] text-ink"
-              onClick={() => setOpen(false)}
-            >
-              {link.label}
-            </a>
-          ))}
-          <UnderlineCTA href="#contact" onClick={() => setOpen(false)}>
-            CONTACT
-          </UnderlineCTA>
-        </nav>
-      )}
+      <nav
+        aria-hidden={!open}
+        className={`flex flex-col gap-4 overflow-hidden px-6 transition-all duration-300 ease-out motion-reduce:transition-none md:hidden ${
+          open
+            ? "max-h-80 translate-y-0 border-t border-ink/10 py-6 opacity-100"
+            : "max-h-0 -translate-y-2 py-0 opacity-0"
+        }`}
+      >
+        {NAV_LINKS.map((link) => (
+          <a
+            key={link.label}
+            href={link.href}
+            tabIndex={open ? 0 : -1}
+            className="font-sans text-xs tracking-[0.15em] text-ink transition-transform duration-150 active:scale-95 motion-reduce:active:scale-100"
+            onClick={() => setOpen(false)}
+          >
+            {link.label}
+          </a>
+        ))}
+        <UnderlineCTA href="#contact" onClick={() => setOpen(false)} className={open ? "" : "pointer-events-none"}>
+          CONTACT
+        </UnderlineCTA>
+      </nav>
     </header>
   );
 }

@@ -1,6 +1,7 @@
 import Section from "../Section";
 import SectionHeading from "../SectionHeading";
 import Accent from "../Accent";
+import Reveal from "../Reveal";
 
 const COLUMN_LEFT = ["ANXIETY", "PANIC ATTACKS", "BURNOUT", "TRAUMA", "PERFECTIONISM", "OVERTHINKING"];
 
@@ -16,10 +17,10 @@ const COLUMN_RIGHT = [
 function AreaColumn({ items }: { items: string[] }) {
   return (
     <div className="divide-y divide-ink/10">
-      {items.map((area) => (
-        <div key={area} className="py-4">
+      {items.map((area, index) => (
+        <Reveal key={area} delayMs={index * 70} className="py-4">
           <span className="font-sans text-sm tracking-[0.1em] text-ink/80">{area}</span>
-        </div>
+        </Reveal>
       ))}
     </div>
   );
